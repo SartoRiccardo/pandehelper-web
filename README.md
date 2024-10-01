@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PandeHelper Website
 
-## Getting Started
+A small (currently static) website to host info about [PandeHelper](https://github.com/SartoRiccardo/ct-ticket-tracker)
 
-First, run the development server:
+Hosted at: [pandehelper.sarto.dev](https://pandehelper.sarto.dev)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Cloning
+
+1. Clone the project and install dependencies
+
+```
+git clone https://github.com/SartoRiccardo/pandehelper-web
+cd pandehelper-web
+npm ci
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Generate an RSA key pair so the bot can communicate with the website's API.
+   - Only the public one is needed to check if the requests are signed by the bot itself.
+   - If you've already generated a key pair, simply move the public key here.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+openssl genrsa -out pandehelper-bot.pem 3072
+openssl rsa -in pandehelper-bot.pem -pubout -out pandehelper-bot.pub.pem
+mv pandehelper-bot.pem path/to/pandehelper-bot
+```
