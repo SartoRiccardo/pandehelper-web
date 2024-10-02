@@ -1,5 +1,7 @@
 import Link from "next/link";
 import cssBase from "./BaseLayout.module.css";
+import MobileNavbar from "./mobile/MobileNavbar";
+import navlinks from "./navlinks";
 
 export default function Header() {
   return (
@@ -10,60 +12,54 @@ export default function Header() {
         </div>
       </Link>
 
-      <nav class={cssBase.navigation}>
-        <a
-          href={`https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_BOT_ID}&permissions=${process.env.NEXT_PUBLIC_BOT_PERMS}&scope=bot&integration_type=0`}
-          target="_blank"
-        >
-          <div>
-            <span>Invite</span>
-          </div>
-        </a>
-
-        <div className={cssBase.has_dropdown}>
-          <span>
-            Commands <i className="bi bi-caret-down ms-1" />
-          </span>
-          <div className={cssBase.dropdown}>
-            <ul>
-              <li>
-                <Link href="/commands/tile-capturing">Tile Capturing</Link>
-              </li>
-              <li>
-                <Link href="/commands/banner-planner">Banner Planner</Link>
-              </li>
-              <li>
-                <Link href="/commands/map-information">Map Information</Link>
-              </li>
-              <li>
-                <Link href="/commands/leaderboard">Leaderboard</Link>
-              </li>
-              <li>
-                <Link href="/commands/other">Other</Link>
-              </li>
-            </ul>
-          </div>
+      <nav className={cssBase.navigation}>
+        <div className="d-none d-md-flex">
+          <DesktopNavbar
+            has_dropdown={cssBase.has_dropdown}
+            dropdown={cssBase.dropdown}
+          />
         </div>
-
-        <div className={cssBase.has_dropdown}>
-          <span>
-            Setting Up <i className="bi bi-caret-down ms-1" />
-          </span>
-          <div className={cssBase.dropdown}>
-            <ul>
-              <li>
-                <Link href="/setup/tracker-channel">Tracker Channel</Link>
-              </li>
-              <li>
-                <Link href="/setup/banner-planner">Banner Planner</Link>
-              </li>
-              <li>
-                <Link href="/setup/strategy-forum">Strategy Forum</Link>
-              </li>
-            </ul>
-          </div>
+        <div className="d-flex d-md-none">
+          <MobileNavbar />
         </div>
       </nav>
     </div>
   );
+}
+
+function DesktopNavbar({ has_dropdown, dropdown }) {
+  return navlinks.map(({ label, url, children }) => {
+    const isExt = url && url.startsWith("http");
+
+    const comp = (
+      <div>
+        <span>{label}</span>
+      </div>
+    );
+
+    return url ? (
+      isExt ? (
+        <a key={label} target="_blank" href={url}>
+          {comp}
+        </a>
+      ) : (
+        <Link href={url}>{comp}</Link>
+      )
+    ) : (
+      <div key={label} className={cssBase.has_dropdown}>
+        <span>
+          {label} <i className="bi bi-caret-down ms-1" />
+        </span>
+        <div className={cssBase.dropdown}>
+          <ul>
+            {children.map(({ label, url }) => (
+              <li key={label}>
+                <Link href={url}>{label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  });
 }

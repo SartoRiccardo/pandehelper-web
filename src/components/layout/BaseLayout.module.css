@@ -1,17 +1,30 @@
 .header {
   padding: 1rem 2rem 1rem 2rem;
-  font-family: var(--font-title);
   font-size: 1.6rem;
   display: flex;
 }
 
+.mobile_dropdown {
+  font-size: 1.6rem;
+  height: 100% !important;
+}
+
+.header,
+.mobile_dropdown {
+  font-family: var(--font-title);
+}
+
 .header a,
-.header a:visited {
+.header a:visited,
+.mobile_dropdown a,
+.mobile_dropdown a:visited {
+  display: block;
   text-decoration: none;
   color: var(--color-text);
 }
 
-.header a:hover {
+.header a:hover,
+.mobile_dropdown a:hover {
   color: inherit;
 }
 
@@ -32,24 +45,33 @@
   padding-top: 0.75rem;
 }
 
-.dropdown > ul {
+.header ul,
+.mobile_dropdown ul {
   background-color: var(--color-secondary);
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   list-style: none;
 }
 
-.dropdown > ul li {
+.header ul li,
+.mobile_dropdown ul li {
   padding: 0.1rem 0;
 }
 
-.dropdown > ul a {
+.header ul a,
+.mobile_dropdown ul a {
   display: inline-block;
   width: 100%;
 }
 
-.dropdown > ul a:hover {
+.header ul a:hover,
+.mobile_dropdown ul a:hover {
   color: var(--color-active);
+}
+
+.mobile_dropdown_menu ul {
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
 }
 
 .has_dropdown:hover .dropdown {
@@ -58,24 +80,69 @@
   transform: translateY(0);
 }
 
-nav.navigation {
-  display: flex;
-  flex: 1;
-  justify-content: flex-end;
-  align-self: flex-end;
-
+.header > a {
   align-self: center;
 }
 
-nav.navigation span {
+nav.navigation {
+  flex: 1;
+  align-self: center;
+}
+
+nav.navigation > div {
+  justify-content: flex-end;
+  display: flex;
+}
+
+nav.navigation span,
+.mobile_menu,
+.close,
+.mobile_dropdown span {
   transition: background-color 0.2s ease;
-  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
 }
 
-nav.navigation span:hover {
-  background-color: var(--color-secondary);
+.mobile_dropdown span {
+  display: block;
+}
+
+nav.navigation span:not(.mobile_menu),
+.mobile_dropdown span {
+  padding: 0.5rem 1rem;
+}
+
+.mobile_menu,
+.close {
+  padding: 0.25rem 1rem;
+}
+
+nav.navigation span:hover,
+.mobile_menu:hover,
+.close:hover,
+.mobile_dropdown span:hover {
   cursor: pointer;
+}
+
+nav.navigation span:hover,
+.mobile_menu:hover {
+  background-color: var(--color-secondary);
+}
+
+.close:hover {
+  background-color: var(--color-primary);
+}
+
+.mobile_dropdown {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.mobile_navlinks_container > *:not(:last-child) {
+  border-bottom: 1px solid var(--color-primary);
+}
+
+.mobile_dropdown_menu ul > li:not(:last-child) {
+  border-bottom: 1px solid var(--color-secondary);
 }
 
 .footer {

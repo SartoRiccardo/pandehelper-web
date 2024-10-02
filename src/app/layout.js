@@ -13,9 +13,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
+    <html className={`${titleFont.variable}`} lang="en">
       <body>
-        <div className={`${titleFont.variable}`} id="content">
+        <div id="content">
           <Header />
           <div className="container mb-5 mt-3">{children}</div>
           <Footer />
