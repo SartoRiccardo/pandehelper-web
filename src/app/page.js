@@ -1,1 +1,5 @@
-export default function Home() {}
+import { premise as fs } from "fs";
+
+export default function Home() {
+  return <></>;
+}

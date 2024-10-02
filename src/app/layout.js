@@ -1,4 +1,9 @@
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { titleFont } from "@/lib/fonts";
 
 export const metadata = {
   title: "PandeHelper",
@@ -9,7 +14,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <div className={`${titleFont.variable}`} id="content">
+          <Header />
+          <div className="container mb-5 mt-3">{children}</div>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }
