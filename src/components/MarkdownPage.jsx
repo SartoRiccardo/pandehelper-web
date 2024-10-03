@@ -3,6 +3,8 @@ import { Fragment } from "react";
 import Markdown from "react-markdown";
 import { noticeProperties } from "./Notice";
 import Notice from "./Notice";
+import commandModules from "@/utils/command-modules";
+import Link from "next/link";
 
 export default function MarkdownPage({ children }) {
   return (
@@ -62,9 +64,9 @@ export default function MarkdownPage({ children }) {
           const classes = node.children[0].properties.className || [];
           const language = classes.find((el) => el.startsWith("language-"));
           const match = /language-(\w+)/.exec(language || "");
+          const content = node.children[0].children[0].value;
 
           if (match && Object.keys(noticeProperties).includes(match[1])) {
-            const content = node.children[0].children[0].value;
             return <Notice language={match[1]}>{content}</Notice>;
           }
 
@@ -78,34 +80,56 @@ export default function MarkdownPage({ children }) {
 }
 
 function InlineCommand({ children }) {
+  let module = null;
+  let commandName = [];
+  let isCommandName = true;
+
   const cmdParts = children.split(" ");
-  const cmdComp = cmdParts.map((part, i) => {
-    if (part.includes(":")) {
-      const [param, value] = part.split(":", 2);
+  const cmdComp = (
+    <code className={cssGuide.command}>
+      {cmdParts.map((part, i) => {
+        if (i === 0) module = commandModules[part.substring(1)] || null;
 
-      let clsValue = cssGuide.value;
-      if (value.startsWith("#") || value.startsWith("@")) {
-        clsValue += " " + cssGuide.mention;
-      }
+        if (part.includes(":")) {
+          isCommandName = false;
+          const [param, value] = part.split(":", 2);
 
-      return (
-        <Fragment key={part}>
-          <span>
-            <span className={cssGuide.parameter}>{param}:</span>
-            <span className={clsValue}>{value}</span>
-          </span>
-          {i < cmdParts.length - 1 && " "}
-        </Fragment>
-      );
-    }
+          let clsValue = cssGuide.value;
+          if (value.startsWith("#") || value.startsWith("@")) {
+            clsValue += " " + cssGuide.mention;
+          }
 
-    return (
-      <Fragment key={part}>
-        <span>{part}</span>
-        {i < cmdParts.length - 1 && " "}
-      </Fragment>
-    );
-  });
+          return (
+            <Fragment key={part}>
+              <span>
+                <span className={cssGuide.parameter}>{param}:</span>
+                <span className={clsValue}>{value}</span>
+              </span>
+              {i < cmdParts.length - 1 && " "}
+            </Fragment>
+          );
+        }
 
-  return <code className={cssGuide.command}>{cmdComp}</code>;
+        if (isCommandName) commandName.push(part);
+
+        return (
+          <Fragment key={part}>
+            <span>{part}</span>
+            {i < cmdParts.length - 1 && " "}
+          </Fragment>
+        );
+      })}
+    </code>
+  );
+
+  return module ? (
+    <Link
+      className={cssGuide.command_link}
+      href={`/commands/${module}#${commandName.join("-").substring(1)}`}
+    >
+      {cmdComp}
+    </Link>
+  ) : (
+    cmdComp
+  );
 }

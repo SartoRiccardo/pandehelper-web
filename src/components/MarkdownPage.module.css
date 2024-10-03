@@ -38,6 +38,7 @@ h1.heading {
   margin: 0 0.1rem;
   background-color: var(--color-secondary);
   color: var(--color-text);
+  transition: background-color 0.2s ease;
 }
 
 .markdown .mention {
@@ -45,6 +46,15 @@ h1.heading {
   background-color: var(--color-mention-bg);
   font-weight: bold;
   text-decoration: underline;
+}
+
+a.command_link {
+  text-decoration: none;
+}
+
+a.command_link:hover code {
+  background-color: var(--color-highlight);
+  cursor: pointer;
 }
 
 .markdown li:not(:last-child) {
