@@ -2,11 +2,14 @@
 
 :root {
   --color-primary: #1a1a1a;
-  --color-secondary: #2e2e2e;
-  --color-highlight: #b0235c;
-  --color-active: #f8bbd0;
-  --color-contrast: #b0235c;
+  --color-secondary: #333c4a;
+  --color-highlight: #ff8c42;
+  --color-active: #ce93d8;
+  --color-contrast: #00b4d8;
   --color-text: white;
+
+  --color-mention-text: #a2d2ff;
+  --color-mention-bg: var(--color-secondary);
 }
 
 body {

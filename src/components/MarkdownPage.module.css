@@ -1,0 +1,110 @@
+.markdown h1,
+.markdown h2,
+.markdown h3,
+.markdown h4,
+.markdown h5,
+.markdown h6 {
+  text-align: center;
+  border-bottom: 1px solid var(--color-secondary);
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h1 {
+  padding-top: 0;
+}
+
+.markdown p {
+  text-align: justify;
+}
+
+.markdown code {
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.5rem;
+  margin: 0 0.1rem;
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.markdown .mention {
+  color: var(--color-mention-text);
+  background-color: var(--color-mention-bg);
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.markdown li:not(:last-child) {
+  margin-bottom: 0.5rem;
+}
+
+.markdown li li:first-child {
+  margin-top: 0.5rem;
+}
+
+.markdown .command {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  margin: 0 0.1rem;
+}
+
+.command {
+  color: var(--color-text);
+  background-color: var(--color-secondary);
+}
+
+.command .parameter {
+  padding: 0.05rem 0.4rem;
+  padding-right: 0.2rem;
+  background-color: var(--color-highlight);
+  border: 1px solid var(--color-highlight);
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.command .value {
+  padding: 0.05rem 0.4rem;
+  padding-left: 0.4rem;
+  background-color: var(--color-secondary);
+  border: 1px solid var(--color-highlight);
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.notice {
+  margin: 1.5rem auto;
+  max-width: 50rem;
+}
+
+.notice.warn {
+  --color-notice-primary: #ffca28;
+  --color-notice-secondary: #fff8e1;
+  --color-notice-text-head: #3e2723;
+  --color-notice-text: black;
+}
+
+.notice.info {
+  --color-notice-primary: #42a5f5;
+  --color-notice-secondary: #bbdefb;
+  --color-notice-text-head: white;
+  --color-notice-text: black;
+}
+
+.notice_header {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+  border: 1px solid var(--color-notice-primary);
+  background-color: var(--color-notice-primary);
+  color: var(--color-notice-text-head);
+}
+
+.notice_body {
+  white-space: pre-line;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-notice-primary);
+  background-color: var(--color-notice-secondary);
+  color: var(--color-notice-text);
+}

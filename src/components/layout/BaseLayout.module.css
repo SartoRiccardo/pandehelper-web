@@ -155,7 +155,7 @@ nav.navigation span:hover,
 .footer hr {
   width: 98%;
   border: none;
-  border-top: 1px solid var(--color-contrast);
+  border-top: 1px solid var(--color-secondary);
   margin: 0 auto;
 }
 
