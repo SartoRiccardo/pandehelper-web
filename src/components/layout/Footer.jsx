@@ -10,7 +10,7 @@ export default function Footer() {
           href="https://github.com/SartoRiccardo/ct-ticket-tracker"
           target="_blank"
         >
-          GitHub
+          <i className="bi bi-github" /> GitHub
         </a>
       </p>
       <p>
