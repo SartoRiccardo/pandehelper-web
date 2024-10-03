@@ -13,6 +13,7 @@ h1.heading {
 .markdown img {
   display: block;
   margin: 0 auto;
+  width: 50rem;
   max-width: 100%;
 }
 
@@ -72,8 +73,8 @@ h1.heading {
 .command .parameter {
   padding: 0.05rem 0.4rem;
   padding-right: 0.2rem;
-  background-color: var(--color-highlight);
-  border: 1px solid var(--color-highlight);
+  background-color: var(--color-contrast);
+  border: 1px solid var(--color-contrast);
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
@@ -82,7 +83,7 @@ h1.heading {
   padding: 0.05rem 0.4rem;
   padding-left: 0.4rem;
   background-color: var(--color-secondary);
-  border: 1px solid var(--color-highlight);
+  border: 1px solid var(--color-contrast);
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }

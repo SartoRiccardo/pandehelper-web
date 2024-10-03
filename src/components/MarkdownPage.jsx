@@ -18,16 +18,40 @@ export default function MarkdownPage({ children }) {
       className={cssGuide.markdown}
       components={{
         h1(props) {
-          return <h1 className={cssGuide.heading} {...props} />;
+          return (
+            <h1
+              className={cssGuide.heading}
+              id={props.children.replace(/ /g, "-").toLowerCase()}
+              {...props}
+            />
+          );
         },
         h2(props) {
-          return <h2 className={cssGuide.heading} {...props} />;
+          return (
+            <h2
+              className={cssGuide.heading}
+              id={props.children.replace(/ /g, "-").toLowerCase()}
+              {...props}
+            />
+          );
         },
         h3(props) {
-          return <h3 className={cssGuide.heading} {...props} />;
+          return (
+            <h3
+              className={cssGuide.heading}
+              id={props.children.replace(/ /g, "-").toLowerCase()}
+              {...props}
+            />
+          );
         },
         h4(props) {
-          return <h4 className={cssGuide.heading} {...props} />;
+          return (
+            <h4
+              className={cssGuide.heading}
+              id={props.children.replace(/ /g, "-").toLowerCase()}
+              {...props}
+            />
+          );
         },
 
         code(props) {
