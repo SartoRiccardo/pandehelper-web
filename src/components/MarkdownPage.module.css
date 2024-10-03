@@ -1,9 +1,4 @@
-.markdown h1,
-.markdown h2,
-.markdown h3,
-.markdown h4,
-.markdown h5,
-.markdown h6 {
+.heading {
   text-align: center;
   border-bottom: 1px solid var(--color-secondary);
   padding-top: 2rem;
@@ -11,8 +6,14 @@
   margin-bottom: 1rem;
 }
 
-.markdown h1 {
+h1.heading {
   padding-top: 0;
+}
+
+.markdown img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
 }
 
 .markdown p {
@@ -53,6 +54,10 @@
   background-color: var(--color-secondary);
 }
 
+.command > span {
+  text-wrap: nowrap;
+}
+
 .command .parameter {
   padding: 0.05rem 0.4rem;
   padding-right: 0.2rem;
@@ -76,18 +81,22 @@
   max-width: 50rem;
 }
 
+.notice p {
+  margin-bottom: 0;
+}
+
 .notice.warn {
-  --color-notice-primary: #ffca28;
-  --color-notice-secondary: #fff8e1;
+  --color-notice-primary: #ffd166;
+  --color-notice-secondary: #4b4223;
   --color-notice-text-head: #3e2723;
-  --color-notice-text: black;
+  --color-notice-text: white;
 }
 
 .notice.info {
-  --color-notice-primary: #42a5f5;
-  --color-notice-secondary: #bbdefb;
+  --color-notice-primary: #3a86ff;
+  --color-notice-secondary: #293b5f;
   --color-notice-text-head: white;
-  --color-notice-text: black;
+  --color-notice-text: white;
 }
 
 .notice_header {
