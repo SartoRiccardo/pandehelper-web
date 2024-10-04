@@ -21,6 +21,7 @@
     "react-markdown": "^9.0.1"
   },
   "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
     "purgecss": "^6.0.0"
   }
 }
