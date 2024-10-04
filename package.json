@@ -12,6 +12,7 @@
     "@fullhuman/postcss-purgecss": "^6.0.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
+    "discord.js": "^14.16.3",
     "next": "14.2.13",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-preset-env": "^10.0.5",
@@ -22,6 +23,8 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
-    "purgecss": "^6.0.0"
+    "node-loader": "^2.0.0",
+    "purgecss": "^6.0.0",
+    "zlib-sync": "^0.1.9"
   }
 }

@@ -2,6 +2,7 @@
 const nextConfig = {
   output: "standalone",
   webpack(config) {
+    /* SVG loading */
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
@@ -25,6 +26,12 @@ const nextConfig = {
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.
     fileLoaderRule.exclude = /\.svg$/i;
+
+    /* Discord.js */
+    config.module.rules.push({
+      test: /\.node/,
+      use: "node-loader",
+    });
 
     return config;
   },

@@ -3,8 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import SvgTile from "@/svg/tile.svg";
 import SvgBanner from "@/svg/banner.svg";
+import { REST, Routes } from "discord.js";
 
-export default function Home() {
+export default async function Home() {
+  let appInfo = null;
+  try {
+    const rest = new REST({ version: "10" }).setToken(process.env.APP_TOKEN);
+    appInfo = await rest.get(
+      Routes.currentApplication(process.env.APP_CLIENT_ID)
+    );
+  } catch (exc) {}
+
   return (
     <>
       <div className="row">
@@ -13,12 +22,14 @@ export default function Home() {
           <p className="fs-5">
             Contested Territory Discord bot used by most top teams.
           </p>
-          <p className="pt-1 pb-3">
-            Used in{" "}
-            <u>
-              <b>70</b> servers
-            </u>
-          </p>
+          {appInfo && (
+            <p className="pt-1 pb-3">
+              Used in{" "}
+              <u>
+                <b>{appInfo.approximate_guild_count}</b> servers
+              </u>
+            </p>
+          )}
           <p>
             <a
               href={`https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_BOT_ID}&permissions=${process.env.NEXT_PUBLIC_BOT_PERMS}&scope=bot&integration_type=0`}
