@@ -1,5 +1,5 @@
 import MarkdownPage from "@/components/MarkdownPage";
-import { promises as fs } from "fs";
+import fs from "fs/promises";
 
 export default async function SetupGuide({ params }) {
   const contents = await fs.readFile(
