@@ -3,7 +3,7 @@ import fs from "fs/promises";
 
 export default async function SetupGuide({ params }) {
   const contents = await fs.readFile(
-    `${process.cwd()}/src/pages/setup/${params.module}.md`,
+    `${process.env.PAGES_FOLDER}/${params.module}.md`,
     "utf8"
   );
   return <MarkdownPage>{contents}</MarkdownPage>;
