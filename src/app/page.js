@@ -52,8 +52,8 @@ export default async function Home() {
             className={cssHome.image}
             src="/img/koakuma.png"
             alt="Koakuma with a space helmet"
-            width={490}
-            height={460}
+            width={432}
+            height={502}
           />
         </div>
       </div>
