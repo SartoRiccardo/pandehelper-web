@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 const matcher = [
-  { check: /^\/setup\/(.+)/, dir: `${process.env.PAGES_FOLDER}/setup` },
-  { check: /^\/commands\/(.+)/, dir: `${process.env.PAGES_FOLDER}/commands` },
+  { check: /^\/setup\/(.+)/, dir: `setup` },
+  { check: /^\/commands\/(.+)/, dir: `commands` },
 ];
 
 /**
