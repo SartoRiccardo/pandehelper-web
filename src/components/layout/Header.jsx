@@ -2,12 +2,20 @@ import Link from "next/link";
 import cssBase from "./BaseLayout.module.css";
 import MobileNavbar from "./mobile/MobileNavbar";
 import navlinks from "./navlinks";
+import Image from "next/image";
 
 export default function Header() {
   return (
     <div className={cssBase.header}>
       <Link href="/">
         <div>
+          <Image
+            src="/img/pandehelper.png"
+            alt=""
+            width={256}
+            height={256}
+            className={cssBase.logo}
+          />
           <span className="fs-2">PandeHelper</span>
         </div>
       </Link>
@@ -27,7 +35,7 @@ export default function Header() {
   );
 }
 
-function DesktopNavbar({ has_dropdown, dropdown }) {
+function DesktopNavbar() {
   return navlinks.map(({ label, url, children }) => {
     const isExt = url && url.startsWith("http");
 
