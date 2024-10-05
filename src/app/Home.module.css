@@ -56,3 +56,47 @@
   align-self: end;
   transform: translateY(-0.2rem);
 }
+
+.discord {
+  font-size: 20px;
+  display: flex;
+  padding: 0.5em 1.5em 0.5em 1em;
+  background-color: var(--color-secondary);
+  border-radius: 0.5em;
+  align-self: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.discord .pfp {
+  position: relative;
+}
+
+.online {
+  position: absolute;
+  bottom: -0.3em;
+  right: 0.6em;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  border: 0.3em solid var(--color-secondary);
+  background-color: #64dd17;
+}
+
+.discord .pfp img {
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  margin-right: 1em;
+}
+
+.discord p {
+  font-size: 0.9em;
+  margin-bottom: 0;
+  text-align: start;
+}
+
+.discord .discord_name {
+  font-size: 1.3em;
+  font-family: var(--font-title);
+  color: #ff1744;
+}

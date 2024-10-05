@@ -18,18 +18,25 @@ export default async function Home() {
     <>
       <div className="row">
         <div className="col-12 col-md-8 text-center align-self-center">
-          <h1>PandeHelper</h1>
-          <p className="fs-5">
+          {appInfo ? (
+            <DiscordProfile
+              pfp="/img/pandehelper.png"
+              name="PandeHelper"
+              status={
+                <>
+                  Used in{" "}
+                  <u>
+                    <b>{appInfo.approximate_guild_count}</b> servers
+                  </u>
+                </>
+              }
+            />
+          ) : (
+            <h1>PandeHelper</h1>
+          )}
+          <p className="fs-5 mb-5">
             Contested Territory Discord bot used by most top teams.
           </p>
-          {appInfo && (
-            <p className="pt-1 pb-3">
-              Used in{" "}
-              <u>
-                <b>{appInfo.approximate_guild_count}</b> servers
-              </u>
-            </p>
-          )}
           <p>
             <a
               href={`https://discord.com/api/oauth2/authorize?client_id=${process.env.NEXT_PUBLIC_BOT_ID}&permissions=${process.env.NEXT_PUBLIC_BOT_PERMS}&scope=bot&integration_type=0`}
@@ -113,5 +120,22 @@ function FeatureCard({ href, label, description, icon }) {
         <p className="mb-0">{description}</p>
       </div>
     </Link>
+  );
+}
+
+function DiscordProfile({ pfp, name, status }) {
+  return (
+    <div className="d-flex justify-content-center">
+      <div className={cssHome.discord}>
+        <div className={cssHome.pfp}>
+          <Image src={pfp} alt="" height={3.75 * 20} width={3.75 * 20} />
+          <div className={cssHome.online} />
+        </div>
+        <div>
+          <p className={cssHome.discord_name}>{name}</p>
+          <p>{status}</p>
+        </div>
+      </div>
+    </div>
   );
 }
