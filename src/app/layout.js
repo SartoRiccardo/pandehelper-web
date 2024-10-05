@@ -9,6 +9,19 @@ export const metadata = {
   title: "PandeHelper",
   description:
     "A Discord bot for all your Bloons TD 6 Contested Territory needs!",
+  openGraph: {
+    images: [
+      {
+        url: "https://pandehelper.sarto.dev/img/site-banner.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+};
+
+export const viewport = {
+  themeColor: "#ff1744",
 };
 
 export default function RootLayout({ children }) {
