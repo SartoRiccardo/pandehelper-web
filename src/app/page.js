@@ -46,7 +46,7 @@ export default async function Home() {
             </a>
             &nbsp;|&nbsp;
             <a
-              href="https://github.com/SartoRiccardo/ct-ticket-tracker"
+              href="https://github.com/SartoRiccardo/pandehelper-bot"
               target="_blank"
             >
               <i className="bi bi-github" /> GitHub

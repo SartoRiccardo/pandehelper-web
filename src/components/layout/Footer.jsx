@@ -7,7 +7,7 @@ export default function Footer() {
       <hr />
       <p>
         <a
-          href="https://github.com/SartoRiccardo/ct-ticket-tracker"
+          href="https://github.com/SartoRiccardo/pandehelper-bot"
           target="_blank"
         >
           <i className="bi bi-github" /> GitHub
