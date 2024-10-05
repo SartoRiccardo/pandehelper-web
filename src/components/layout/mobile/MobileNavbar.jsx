@@ -29,14 +29,14 @@ export default function MobileNavbar() {
         </div>
 
         <div className={`${cssBase.mobile_navlinks_container} px-3`}>
-          <MobileNavlinks />
+          <MobileNavlinks onNavigate={handleHide} />
         </div>
       </OffcMobileNav>
     </>
   );
 }
 
-function MobileNavlinks() {
+function MobileNavlinks({ onNavigate }) {
   return navlinks.map(({ label, url, children }) => {
     const isExt = url && url.startsWith("http");
 
@@ -48,21 +48,23 @@ function MobileNavlinks() {
 
     return url ? (
       isExt ? (
-        <a key={label} target="_blank" href={url}>
+        <a key={label} target="_blank" href={url} onClick={onNavigate}>
           {comp}
         </a>
       ) : (
-        <Link href={url}>{comp}</Link>
+        <Link href={url} onClick={onNavigate}>
+          {comp}
+        </Link>
       )
     ) : (
-      <CollapseLink key={label} label={label}>
+      <CollapseLink key={label} label={label} onNavigate={onNavigate}>
         {children}
       </CollapseLink>
     );
   });
 }
 
-function CollapseLink({ label, children }) {
+function CollapseLink({ label, children, onNavigate }) {
   const [open, setOpen] = useState(false);
 
   const toggleOpen = () => setOpen(!open);
@@ -80,7 +82,9 @@ function CollapseLink({ label, children }) {
           <ul>
             {children.map(({ label, url }) => (
               <li key={label}>
-                <Link href={url}>{label}</Link>
+                <Link href={url} onClick={onNavigate}>
+                  {label}
+                </Link>
               </li>
             ))}
           </ul>
