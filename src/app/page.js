@@ -3,15 +3,21 @@ import Image from "next/image";
 import Link from "next/link";
 import SvgTile from "@/svg/tile.svg";
 import SvgBanner from "@/svg/banner.svg";
-import { REST, Routes } from "discord.js";
 
 export default async function Home() {
   let appInfo = null;
   try {
-    const rest = new REST({ version: "10" }).setToken(process.env.APP_TOKEN);
-    appInfo = await rest.get(
-      Routes.currentApplication(process.env.APP_CLIENT_ID)
+    const discordResp = await fetch(
+      `https://discord.com/api/v10/applications/@me`,
+      {
+        headers: {
+          Authorization: `Bot ${process.env.APP_TOKEN}`,
+          "User-Agent": `DiscordBot (https://pandehelper.sarto.dev, 1.0.0)`,
+        },
+        next: { revalidate: 3600 * 24 },
+      }
     );
+    appInfo = await discordResp.json();
   } catch (exc) {}
 
   return (
